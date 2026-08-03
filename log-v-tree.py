@@ -47,7 +47,7 @@ res=pd.DataFrame(results)
 print("---Comparison of Models---")
 print(res.to_string(index=False))
 
-res.set_index('Model').T.plot(kind='bar', figsize=(10, 6), colormap='Set2')
+res.set_index('Model').T.plot(kind='bar', figsize=(10, 6), colormap='Set1')
 
 plt.title('Model Performance Comparison', fontsize=14, fontweight='bold')
 plt.ylabel('Score', fontsize=12)
