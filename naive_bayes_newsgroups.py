@@ -5,16 +5,16 @@ from sklearn.naive_bayes import MultinomialNB, BernoulliNB
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # 1. Load dataset
-print("Loading dataset (downloading if running for the first time)...")
+#print("Loading dataset (downloading if running for the first time)...")
 train_data = fetch_20newsgroups(subset='train', remove=('headers', 'footers', 'quotes'))
 test_data = fetch_20newsgroups(subset='test', remove=('headers', 'footers', 'quotes'))
-print("Dataset loaded successfully!")
+#print("Dataset loaded successfully!")
 
 X_train_raw, y_train = train_data.data, train_data.target
 X_test_raw, y_test = test_data.data, test_data.target
 
 # 2. Vectorize for Multinomial NB (TF-IDF)
-print("Vectorizing text data...")
+#print("Vectorizing text data...")
 tfidf_vec = TfidfVectorizer(max_features=10000, stop_words='english')
 X_train_mnb = tfidf_vec.fit_transform(X_train_raw)
 X_test_mnb = tfidf_vec.transform(X_test_raw)
@@ -25,7 +25,7 @@ X_train_bnb = binary_vec.fit_transform(X_train_raw)
 X_test_bnb = binary_vec.transform(X_test_raw)
 
 # 4. Fit Multinomial Naïve Bayes
-print("Training Naïve Bayes classifiers...")
+#print("Training Naïve Bayes classifiers...")
 mnb = MultinomialNB()
 mnb.fit(X_train_mnb, y_train)
 y_pred_mnb = mnb.predict(X_test_mnb)
@@ -54,5 +54,5 @@ results_df = pd.DataFrame({
     'Bernoulli NB': list(metrics_bnb.values()),
 })
 
-print("\nExecution Complete!")
+#print("\nExecution Complete!")
 print(results_df.to_string(index=False))
