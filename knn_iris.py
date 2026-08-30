@@ -7,13 +7,11 @@ from sklearn.metrics import accuracy_score, classification_report
 
 # 1. Load Iris dataset
 iris = load_iris()
-X = iris.data
-y = iris.target
+X,y = iris.data,iris.target
 
 # 2. Split dataset into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42, stratify=y
-)
+    X, y, test_size=0.2, random_state=42, stratify=y)
 
 # 3. Standardize features
 scaler = StandardScaler()
@@ -42,3 +40,6 @@ y_pred_opt = optimal_knn.predict(X_test_scaled)
 
 print("\nClassification Report (K=5):")
 print(classification_report(y_test, y_pred_opt, target_names=iris.target_names))
+
+
+
